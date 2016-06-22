@@ -72,3 +72,10 @@ export function Moment(config) {
 export function isMoment (obj) {
     return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
 }
+
+export function areMoments () {
+    for (var x=0; x < arguments.length; x++) {
+        if(!isMoment(arguments[0])) return false;
+    }
+    return true;
+}
