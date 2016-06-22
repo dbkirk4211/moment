@@ -41,3 +41,10 @@ test('is moment with hacked hasOwnProperty', function (assert) {
 
     assert.ok(!moment.isMoment(obj), 'isMoment works even if passed object has a wrong hasOwnProperty implementation (ie8)');
 });
+
+test('are moment objects', function (assert) {
+    assert.ok(moment.areMoments(moment()), 'one moment is valid');
+    assert.ok(moment.areMoments(moment(), moment()), 'multiple moments are valid');
+    assert.ok(!moment.areMoments(moment(), null), 'will return falsey if any are not valid');
+    assert.ok(!moment.areMoments(null, moment()), 'will return falsey if any are not valid; in any order');
+})
